@@ -29,8 +29,9 @@ document.addEventListener("DOMContentLoaded", function() {
         const showPanel = document.querySelector('#show-panel')
         showPanel.dataset.id = clickedBook.id 
         const bookUsers = clickedBook.users
+
         const alreadyLiked = bookUsers.find(users => users.username === currentUser.username)
-        
+
         showPanel.innerHTML = `
         <img src= ${clickedBook.img_url}>
         <h2>${clickedBook.title}</h2>
@@ -41,10 +42,10 @@ document.addEventListener("DOMContentLoaded", function() {
         `
         
         bookUsers.forEach(user => {
+            const bookUsersList = document.createElement('ul')
             const li = document.createElement('li')
             li.textContent = user.username
 
-            const bookUsersList = document.createElement('ul')
             let showPanel = document.querySelector('#show-panel')
             showPanel.appendChild(bookUsersList)
             bookUsersList.appendChild(li)
@@ -121,8 +122,6 @@ document.addEventListener("DOMContentLoaded", function() {
             }
         })
     }
-    
-
     
     getBooks();
     clickHandler();
